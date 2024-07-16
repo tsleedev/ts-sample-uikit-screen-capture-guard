@@ -1,0 +1,1 @@
+# ts-sample-uikit-screen-capture-guard
