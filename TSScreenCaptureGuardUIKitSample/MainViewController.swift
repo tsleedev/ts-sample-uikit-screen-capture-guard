@@ -8,6 +8,11 @@
 
 import UIKit
 
+private struct Item {
+    let id: String
+    let title: String
+}
+
 class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     // MARK: - Views
     private let tableView: UITableView = {
@@ -18,7 +23,11 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }()
     
     // MARK: - Properties
-    private let items = ["네이티브", "웹뷰"]
+    private let items: [Item] = [
+        .init(id: "1", title: "네이티브"),
+        .init(id: "2", title: "웹뷰"),
+        .init(id: "3", title: "웹뷰(스크린 방지 코드 자체 포함)")
+    ]
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -76,7 +85,7 @@ extension MainViewController {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = items[indexPath.row]
+        cell.textLabel?.text = items[indexPath.row].title
         return cell
     }
 }
@@ -84,14 +93,18 @@ extension MainViewController {
 // MARK: - UITableViewDelegate
 extension MainViewController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedItem = items[indexPath.row]
+        tableView.deselectRow(at: indexPath, animated: true)
         
-        if selectedItem == "네이티브" {
-            let nativeVC = NativeViewController()
-            self.navigationController?.pushViewController(nativeVC, animated: true)
-        } else if selectedItem == "웹뷰" {
-            let webViewVC = WebViewController()
-            self.navigationController?.pushViewController(webViewVC, animated: true)
+        let selectedItem = items[indexPath.row]
+        if selectedItem.id == "1" {
+            let viewController = NativeViewController()
+            self.navigationController?.pushViewController(viewController, animated: true)
+        } else if selectedItem.id == "2" {
+            let viewController = WebViewController()
+            self.navigationController?.pushViewController(viewController, animated: true)
+        } else if selectedItem.id == "3" {
+            let viewController = SecureWebViewController()
+            self.navigationController?.pushViewController(viewController, animated: true)
         }
     }
 }
