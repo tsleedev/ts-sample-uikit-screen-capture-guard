@@ -22,7 +22,7 @@ class WebViewController: UIViewController {
         let backButtonImage = UIImage(systemName: "chevron.left")
         let backButton = UIBarButtonItem(image: backButtonImage, style: .plain, target: self, action: #selector(backButtonTapped))
 
-        let toolbar = UIToolbar()
+        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 44))
         toolbar.setItems([backButton], animated: false)
         toolbar.translatesAutoresizingMaskIntoConstraints = false
         return toolbar
