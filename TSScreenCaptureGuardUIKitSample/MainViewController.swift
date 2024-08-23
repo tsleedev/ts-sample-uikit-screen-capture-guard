@@ -18,7 +18,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     private let tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        tableView.secureMode = true
+//        tableView.secureMode = true // iOS 16 미만에서 tableView(_:didSelectRowAt:) 호출이 안되는 이슈가 있음
         return tableView
     }()
     
