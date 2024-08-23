@@ -83,7 +83,7 @@ private extension SecureWebViewController {
             textField.layer.removeFromSuperlayer()
             if let superlayer = view.layer.superlayer {
                 superlayer.addSublayer(textField.layer)
-                textField.layer.sublayers?.first?.addSublayer(view.layer)
+                textField.layer.sublayers?.last?.addSublayer(view.layer)
             }
             // 특정화면에서 뒤로가기시 키보드가 노출되는 상황이 있어서 추가
             textField.isUserInteractionEnabled = false

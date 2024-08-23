@@ -34,9 +34,9 @@ extension UIView {
             if let superlayer = self.layer.superlayer {
                 // 현재 뷰의 슈퍼 레이어에 텍스트 필드의 레이어를 추가합니다.
                 superlayer.addSublayer(textField.layer)
-                // 텍스트 필드의 첫 번째 서브 레이어에 현재 뷰의 레이어를 추가하여,
+                // 텍스트 필드의 마지막 서브 레이어에 현재 뷰의 레이어를 추가하여,
                 // 텍스트 필드가 보안 텍스트로 표시될 때 해당 뷰의 콘텐츠도 스크린샷에서 숨겨지게 합니다.
-                textField.layer.sublayers?.first?.addSublayer(self.layer)
+                textField.layer.sublayers?.last?.addSublayer(self.layer)
             }
         }
     }
