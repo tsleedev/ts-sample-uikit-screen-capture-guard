@@ -38,6 +38,10 @@ class SecureWebViewController: UIViewController {
         configureUI()
         webLoad()
     }
+    
+    deinit {
+        print("\(type(of: self)) \(#function)")
+    }
 }
 
 // MARK: - Setup

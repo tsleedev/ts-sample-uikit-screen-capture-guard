@@ -11,7 +11,7 @@ import WebKit
 
 // MARK: - WKUIDelegate
 class WebViewUIDelegate: NSObject, WKUIDelegate {
-    let parentViewController: UIViewController
+    weak var parentViewController: UIViewController?
     
     init(parentViewController: UIViewController) {
         self.parentViewController = parentViewController
@@ -23,6 +23,6 @@ class WebViewUIDelegate: NSObject, WKUIDelegate {
             completionHandler()
         }
         alert.addAction(confirmAction)
-        parentViewController.present(alert, animated: true)
+        parentViewController?.present(alert, animated: true)
     }
 }

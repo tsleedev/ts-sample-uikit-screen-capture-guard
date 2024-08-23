@@ -40,6 +40,7 @@ class WebViewController: UIViewController {
     
     deinit {
         webView.disableSecureMode()
+        print("\(type(of: self)) \(#function)")
     }
 }
 

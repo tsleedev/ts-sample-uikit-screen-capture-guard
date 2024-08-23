@@ -31,6 +31,7 @@ class NativeViewController: UIViewController {
     
     deinit {
         containerView.disableSecureMode()
+        print("\(type(of: self)) \(#function)")
     }
 }
 
